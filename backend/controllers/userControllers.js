@@ -8,7 +8,7 @@ const generateToken = (id) => {
     })
 }
 
-// Middleware for user authorization
+// Middleware for authorization
 const protect = asyncHandler(async (req,res,next) => {
     let token;
 

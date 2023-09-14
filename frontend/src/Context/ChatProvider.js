@@ -15,9 +15,9 @@ const ChatProvider = ({children}) => {
 
         setUser(userInfo)
 
-        // if (!userInfo) {
-        //     history.push('/')
-        // }
+        if (!userInfo) {
+            history.push('/')
+        }
     }, [history])
 
     return (
