@@ -81,7 +81,7 @@ const SingleChat = ({fetchAgain, setFetchAgain}) => {
             if(!selectedChatCompare || selectedChatCompare._id !== newMessageRecieved.chat._id) {
 
             } else {
-                setMessages([...messages],newMessageRecieved)
+                setMessages([...messages,newMessageRecieved])
             }
         })
     })
