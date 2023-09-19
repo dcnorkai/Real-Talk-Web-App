@@ -100,12 +100,7 @@ const SideDrawer = () => {
                         Real Talk
                     </Text>
                     <div>
-                        <Menu>
-                            <MenuButton p={1}>
-                                <BellIcon fontSize="2xl"/>
-                            </MenuButton>
-                            {/* <MenuList></MenuList> */}
-                        </Menu>
+
                         <Menu>
                             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                                 <Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/>
