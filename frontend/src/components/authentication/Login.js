@@ -62,7 +62,7 @@ const Login = () => {
             )
 
             toast({
-                title: "Login Successful",
+                title: "Login Successful (Might need to refresh the page)",
                 status: "success",
                 duration: 5000,
                 isClosable: true,

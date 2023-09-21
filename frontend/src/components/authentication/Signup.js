@@ -90,7 +90,7 @@ const Signup = () => {
 
             const { data } = await axios.post("/api/user",{name,email,password,pic},config);
             toast({
-                title: "Registration Successful!",
+                title: "Registration Successful! (Might need to refresh the page)",
                 status: "success",
                 duration: 5000,
                 isClosable: true,
