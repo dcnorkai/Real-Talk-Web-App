@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Tooltip, Button, Text, Flex, MenuButton, Menu, MenuList, MenuItem, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, Input, useToast, Spinner, useDisclosure } from "@chakra-ui/react";
-import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Avatar } from "@chakra-ui/avatar";
 import { ChatState } from "../../Context/ChatProvider";
 import ProfileModal from './ProfileModal';
