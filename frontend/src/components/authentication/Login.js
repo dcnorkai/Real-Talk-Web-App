@@ -62,7 +62,7 @@ const Login = () => {
             )
 
             toast({
-                title: "Login Successful (Might need to refresh the page)",
+                title: "Login Successful",
                 status: "success",
                 duration: 5000,
                 isClosable: true,
@@ -71,6 +71,7 @@ const Login = () => {
             localStorage.setItem("userInfo", JSON.stringify(data))
             setLoading(false);
             history.push("/chats");
+            window.location.reload();
         } catch (error) {
             toast({
                 title: "Error Occured",
