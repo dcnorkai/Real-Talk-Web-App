@@ -1,6 +1,5 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const {chats} = require("./data/data");
 const mongoose = require("mongoose");
 const userRoutes =require('./routes/userRoutes');
 const chatRoutes =require('./routes/chatRoutes');
