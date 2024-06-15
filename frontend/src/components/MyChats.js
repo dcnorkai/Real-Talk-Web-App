@@ -60,7 +60,7 @@ const MyChats = ({fetchAgain}) => {
             pb={3}
             px={3}
             fontSize={{ base: "28px", md: "30px" }}
-            fontFamily="gg sans semibold"
+            fontFamily="Work sans"
             display="flex"
             width="100%"
             justifyContent="space-between"
