@@ -5,8 +5,9 @@ const mongoose = require("mongoose");
 const userRoutes = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require("./routes/messageRoutes");
-const app = express();
 const path = require('path');
+
+const app = express();
 
 dotenv.config();
 
@@ -19,15 +20,15 @@ const connectDB = async () => {
         console.log("MongoDB Connected Successfully");
     } catch (error) {
         console.log(error);
-        process.exit();
+        process.exit(1);
     }
-}
+};
 
 const notFound = (req, res, next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`);
     res.status(404);
     next(error);
-}
+};
 
 const errorHandler = (err, req, res, next) => {
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
@@ -36,7 +37,7 @@ const errorHandler = (err, req, res, next) => {
         message: err.message,
         stack: process.env.NODE_ENV === "production" ? null : err.stack,
     });
-}
+};
 
 connectDB();
 
@@ -46,8 +47,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/message', messageRoutes);
 
-// -------------------------------------------Deployment-------------------------------------------
-
+// Serve static files from the React frontend app
 const __dirname1 = path.resolve();
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname1, "/frontend/build")));
@@ -60,8 +60,6 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-// ------------------------------------------------------------------------------------------------
-
 app.use(notFound);
 app.use(errorHandler);
 
@@ -70,37 +68,4 @@ const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log(`Backend server is running on port ${PORT}`));
 
 const io = require('socket.io')(server, {
-    pingTimeout: 60000, // Save bandwidth by closing the connection after 60 seconds
-    cors: {
-        origin: "http://localhost:3000",
-    },
-});
-
-io.on("connection", (socket) => {
-    console.log("connected to socket.io");
-    socket.on('setup', (userData) => {
-        socket.join(userData._id);
-        socket.emit('connected');
-    });
-    socket.on("join chat", (room) => {
-        socket.join(room);
-        console.log("User Joined Room: " + room);
-    });
-
-    socket.on("new message", (newMessageRecieved) => {
-        var chat = newMessageRecieved.chat;
-
-        if (!chat.users) return console.log("chat.users not defined");
-
-        chat.users.forEach((user) => {
-            if (user._id == newMessageRecieved.sender._id) return;
-
-            socket.in(user._id).emit("message recieved", newMessageRecieved);
-        });
-    });
-
-    socket.off("setup", () => {
-        console.log("USER DISCONNECTED");
-        socket.leave(userData._id);
-    });
-});
+    pingTim
